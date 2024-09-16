@@ -13,9 +13,24 @@
             height: 100vh;
             margin: 0;
             background: linear-gradient(45deg, #ff9a9e, #fad0c4, #ffecd2);
+            background-size: 400% 400%;
+            animation: gradient-animation 20s ease infinite;
             overflow: hidden;
             perspective: 1000px;
         }
+
+        @keyframes gradient-animation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
         .container {
             text-align: center;
             position: relative;
@@ -23,10 +38,12 @@
             transform-style: preserve-3d;
             animation: container-rotate 40s infinite linear;
         }
+
         @keyframes container-rotate {
             0% { transform: rotateY(0deg); }
             100% { transform: rotateY(360deg); }
         }
+
         .slideshow {
             width: 300px;
             height: 300px;
@@ -35,10 +52,12 @@
             transform-style: preserve-3d;
             animation: slideshow-rotate 30s infinite linear;
         }
+
         @keyframes slideshow-rotate {
             0% { transform: rotateY(0deg); }
             100% { transform: rotateY(360deg); }
         }
+
         .slideshow img {
             position: absolute;
             width: 100%;
@@ -50,17 +69,21 @@
             opacity: 0.7;
             transition: opacity 0.5s ease-in-out;
         }
+
         .slideshow img:nth-child(1) { transform: rotateY(0deg) translateZ(200px); }
         .slideshow img:nth-child(2) { transform: rotateY(72deg) translateZ(200px); }
         .slideshow img:nth-child(3) { transform: rotateY(144deg) translateZ(200px); }
         .slideshow img:nth-child(4) { transform: rotateY(216deg) translateZ(200px); }
         .slideshow img:nth-child(5) { transform: rotateY(288deg) translateZ(200px); }
+
         .slideshow:hover {
             animation-play-state: paused;
         }
+
         .slideshow:hover img {
             opacity: 1;
         }
+
         .title {
             font-size: 2.5em;
             margin-bottom: 20px;
@@ -68,17 +91,21 @@
             padding-bottom: 20px;
             color: white;
         }
+
         .title #FORTUNE {
             color: orange;
         }
+
         .title span {
             display: inline-block;
             animation: bounce-animation 2s ease-in-out infinite;
         }
+
         @keyframes bounce-animation {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-20px); }
         }
+
         .emoji {
             position: fixed;
             font-size: 40px;
@@ -86,6 +113,7 @@
             animation: float 10s linear infinite;
             opacity: 0;
         }
+
         @keyframes float {
             0% { transform: translate(0, 0) rotate(0deg) scale(0); opacity: 0; }
             10% { opacity: 1; }
@@ -98,13 +126,16 @@
             .container {
                 transform: scale(0.8);
             }
+
             .title {
                 font-size: 2em;
             }
+
             .slideshow {
                 width: 250px;
                 height: 250px;
             }
+
             .slideshow img:nth-child(1) { transform: rotateY(0deg) translateZ(150px); }
             .slideshow img:nth-child(2) { transform: rotateY(72deg) translateZ(150px); }
             .slideshow img:nth-child(3) { transform: rotateY(144deg) translateZ(150px); }
@@ -116,18 +147,22 @@
             .container {
                 transform: scale(0.6);
             }
+
             .title {
                 font-size: 1.5em;
             }
+
             .slideshow {
                 width: 200px;
                 height: 200px;
             }
+
             .slideshow img:nth-child(1) { transform: rotateY(0deg) translateZ(100px); }
             .slideshow img:nth-child(2) { transform: rotateY(72deg) translateZ(100px); }
             .slideshow img:nth-child(3) { transform: rotateY(144deg) translateZ(100px); }
             .slideshow img:nth-child(4) { transform: rotateY(216deg) translateZ(100px); }
             .slideshow img:nth-child(5) { transform: rotateY(288deg) translateZ(100px); }
+
             .emoji {
                 font-size: 30px;
             }
