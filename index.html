@@ -21,7 +21,7 @@
             position: relative;
             z-index: 1;
             transform-style: preserve-3d;
-            animation: container-rotate 40s infinite linear; /* Slowed down from 20s to 40s */
+            animation: container-rotate 40s infinite linear;
         }
         @keyframes container-rotate {
             0% { transform: rotateY(0deg); }
@@ -33,7 +33,7 @@
             margin: 0 auto;
             position: relative;
             transform-style: preserve-3d;
-            animation: slideshow-rotate 30s infinite linear; /* Slowed down from 15s to 30s */
+            animation: slideshow-rotate 30s infinite linear;
         }
         @keyframes slideshow-rotate {
             0% { transform: rotateY(0deg); }
@@ -51,8 +51,10 @@
             transition: opacity 0.5s ease-in-out;
         }
         .slideshow img:nth-child(1) { transform: rotateY(0deg) translateZ(200px); }
-        .slideshow img:nth-child(2) { transform: rotateY(120deg) translateZ(200px); }
-        .slideshow img:nth-child(3) { transform: rotateY(240deg) translateZ(200px); }
+        .slideshow img:nth-child(2) { transform: rotateY(72deg) translateZ(200px); }
+        .slideshow img:nth-child(3) { transform: rotateY(144deg) translateZ(200px); }
+        .slideshow img:nth-child(4) { transform: rotateY(216deg) translateZ(200px); }
+        .slideshow img:nth-child(5) { transform: rotateY(288deg) translateZ(200px); }
         .slideshow:hover {
             animation-play-state: paused;
         }
@@ -62,22 +64,20 @@
         .title {
             font-size: 2.5em;
             margin-bottom: 20px;
-            transform-style: preserve-3d;
             perspective: 300px;
-            padding: -40px;
-            color: white;
             padding-bottom: 20px;
+            color: white;
         }
-        .title #FORTUNE{
+        .title #FORTUNE {
             color: orange;
         }
         .title span {
             display: inline-block;
-            animation: letter-animation 8s infinite; /* Slowed down from 5s to 8s */
+            animation: bounce-animation 2s ease-in-out infinite;
         }
-        @keyframes letter-animation {
-            0%, 100% { transform: rotateY(0deg) translateZ(0px); }
-            50% { transform: rotateY(360deg) translateZ(20px); }
+        @keyframes bounce-animation {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
         }
         .emoji {
             position: fixed;
@@ -92,18 +92,52 @@
             90% { opacity: 1; }
             100% { transform: translate(var(--move-x), var(--move-y)) rotate(360deg) scale(1.5); opacity: 0; }
         }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                transform: scale(0.8);
+            }
+            .title {
+                font-size: 2em;
+            }
+            .slideshow {
+                width: 250px;
+                height: 250px;
+            }
+            .slideshow img:nth-child(1) { transform: rotateY(0deg) translateZ(150px); }
+            .slideshow img:nth-child(2) { transform: rotateY(72deg) translateZ(150px); }
+            .slideshow img:nth-child(3) { transform: rotateY(144deg) translateZ(150px); }
+            .slideshow img:nth-child(4) { transform: rotateY(216deg) translateZ(150px); }
+            .slideshow img:nth-child(5) { transform: rotateY(288deg) translateZ(150px); }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                transform: scale(0.6);
+            }
+            .title {
+                font-size: 1.5em;
+            }
+            .slideshow {
+                width: 200px;
+                height: 200px;
+            }
+            .slideshow img:nth-child(1) { transform: rotateY(0deg) translateZ(100px); }
+            .slideshow img:nth-child(2) { transform: rotateY(72deg) translateZ(100px); }
+            .slideshow img:nth-child(3) { transform: rotateY(144deg) translateZ(100px); }
+            .slideshow img:nth-child(4) { transform: rotateY(216deg) translateZ(100px); }
+            .slideshow img:nth-child(5) { transform: rotateY(288deg) translateZ(100px); }
+            .emoji {
+                font-size: 30px;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="title">
             <span>🎉</span> <span>HAPPY</span> <span>BIRTHDAY</span> <span id="FORTUNE">FORTUNE</span> <span>🎂</span>
-<!--             <span>H</span><span>a</span><span>p</span><span>p</span><span>y</span>
-            <span>B</span><span>i</span><span>r</span><span>t</span><span>h</span><span>d</span><span>a</span><span>y</span> -->
-<!--             <span>F</span><span>o</span><span>r</span><span>t</span><span>u</span><span>n</span><span>e</span> -->
-<!--             <h3>FORTUNE</h3> -->
-            
-            
         </div>
         <div class="slideshow">
             <img src="Forfor/2.jpg" alt="Birthday memory 2">
@@ -129,12 +163,12 @@
             }, 10000);
         }
 
-        setInterval(createEmoji, 1000); // Slowed down from 500ms to 1000ms
+        setInterval(createEmoji, 1000);
 
         // Add a delay to the letter animations
         const letters = document.querySelectorAll('.title span');
         letters.forEach((letter, index) => {
-            letter.style.animationDelay = `${index * 0.2}s`; // Increased from 0.1s to 0.2s
+            letter.style.animationDelay = `${index * 0.1}s`;
         });
     </script>
 </body>
